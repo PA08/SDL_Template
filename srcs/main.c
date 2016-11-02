@@ -5,13 +5,14 @@
 ** Login   <papadi_a@epitech.net>
 **
 ** Started on  Wed Nov  2 20:08:15 2016 alexis papadimitriou
-** Last update Wed Nov  2 20:10:26 2016 alexis papadimitriou
+** Last update Wed Nov  2 21:09:58 2016 alexis papadimitriou
 */
 
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
 #include "utils.h"
+#include "template.h"
 
 void		event_manager(SDL_Event *event, char *running)
 {
@@ -25,15 +26,20 @@ int		main(void)
   SDL_Surface	*screen;
   SDL_Event	event;
   char		running;
+  uint		next;
+  uint		now;
 
   screen = SDL_SetVideoMode(640, 480, 0, 0);
   running = 1;
   srand(time(0) * getpid());
+  next = SDL_GetTicks() + FPS;
   while (running)
     {
       event_manager(&event, &running);
       fill_c(screen, rand() | BLACK);
       SDL_UpdateRect(screen, 0, 0, 0, 0);
+      now = SDL_GetTicks();
+      SDL_Delay((next <= now) ? (0) : (next - now));
     }
   SDL_FreeSurface(screen);
   SDL_Quit();

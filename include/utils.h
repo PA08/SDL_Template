@@ -5,7 +5,7 @@
 ** Login   <papadi_a@epitech.net>
 **
 ** Started on  Wed Nov  2 20:06:24 2016 alexis papadimitriou
-** Last update Wed Nov  2 20:07:51 2016 alexis papadimitriou
+** Last update Wed Nov  2 21:22:52 2016 alexis papadimitriou
 */
 
 #ifndef UTILS_H_
@@ -29,6 +29,12 @@
 # define PINK2	(0xFFFF69B4)
 
 typedef unsigned int uint;
+
+typedef enum	e_bool
+{
+  true = 1,
+  false = 0
+}		bool;
 
 typedef union	u_color
 {

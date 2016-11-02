@@ -5,43 +5,40 @@
 ** Login   <papadi_a@epitech.net>
 **
 ** Started on  Wed Nov  2 20:08:15 2016 alexis papadimitriou
-** Last update Wed Nov  2 21:09:58 2016 alexis papadimitriou
+** Last update Wed Nov  2 21:39:29 2016 alexis papadimitriou
 */
 
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-#include "utils.h"
-#include "template.h"
+#include "events.h"
 
-void		event_manager(SDL_Event *event, char *running)
+void		mainloop(t_template *template)
 {
-  if (SDL_PollEvent(event) && event->type == SDL_KEYDOWN &&
-      event->key.keysym.sym == SDLK_ESCAPE)
-    *running = 0;
+  uint		next;
+  uint		now;
+
+  next = SDL_GetTicks() + FPS;
+  while (template->running)
+    {
+      event_manager(template);
+      fill_c(template->screen, rand() | BLACK);
+      SDL_UpdateRect(template->screen, 0, 0, 0, 0);
+      now = SDL_GetTicks();
+      SDL_Delay((next <= now) ? (0) : (next - now));
+    }
+  SDL_FreeSurface(template->screen);
 }
 
 int		main(void)
 {
-  SDL_Surface	*screen;
-  SDL_Event	event;
-  char		running;
-  uint		next;
-  uint		now;
+  t_template	*template;
 
-  screen = SDL_SetVideoMode(640, 480, 0, 0);
-  running = 1;
+  if ((template = init_template()) == NULL)
+    return (-1);
   srand(time(0) * getpid());
-  next = SDL_GetTicks() + FPS;
-  while (running)
-    {
-      event_manager(&event, &running);
-      fill_c(screen, rand() | BLACK);
-      SDL_UpdateRect(screen, 0, 0, 0, 0);
-      now = SDL_GetTicks();
-      SDL_Delay((next <= now) ? (0) : (next - now));
-    }
-  SDL_FreeSurface(screen);
+  mainloop(template);
+  free_template(template);
   SDL_Quit();
   return (0);
 }

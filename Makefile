@@ -5,7 +5,7 @@
 ## Login   <papadi_a@epitech.net>
 ##
 ## Started on  Wed Nov  2 20:05:55 2016 alexis papadimitriou
-## Last update Wed Nov  2 20:25:21 2016 alexis papadimitriou
+## Last update Wed Nov  2 21:40:11 2016 alexis papadimitriou
 ##
 
 CC		=	gcc
@@ -15,6 +15,8 @@ RM		=	rm -f
 CFLAGS	=	-W -Wall -Werror -Wextra -I./include
 
 SRCS	=	srcs/main.c \
+			srcs/init/template.c \
+			srcs/events/event.c \
 			srcs/utils/putpixel.c \
 			srcs/utils/getpixel.c \
 			srcs/utils/putline.c \

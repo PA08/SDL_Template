@@ -5,7 +5,7 @@
 ** Login   <papadi_a@epitech.net>
 **
 ** Started on  Wed Nov  2 20:08:15 2016 alexis papadimitriou
-** Last update Wed Nov  2 21:39:29 2016 alexis papadimitriou
+** Last update Thu Nov  3 10:35:35 2016 alexis papadimitriou
 */
 
 #include <stdlib.h>
@@ -26,6 +26,7 @@ void		mainloop(t_template *template)
       SDL_UpdateRect(template->screen, 0, 0, 0, 0);
       now = SDL_GetTicks();
       SDL_Delay((next <= now) ? (0) : (next - now));
+      next += FPS;
     }
   SDL_FreeSurface(template->screen);
 }
@@ -34,7 +35,8 @@ int		main(void)
 {
   t_template	*template;
 
-  if ((template = init_template()) == NULL)
+  if (SDL_Init(INIT_FLAGS) ||
+      (template = init_template()) == NULL)
     return (-1);
   srand(time(0) * getpid());
   mainloop(template);

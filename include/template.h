@@ -5,14 +5,14 @@
 ** Login   <papadi_a@epitech.net>
 **
 ** Started on  Wed Nov  2 21:09:02 2016 alexis papadimitriou
-** Last update Thu Nov  3 10:33:24 2016 alexis papadimitriou
+** Last update Thu Nov  3 21:21:31 2016 alexis papadimitriou
 */
 
 #ifndef DEMO_H_
 # define DEMO_H_
 # include "utils.h"
 
-# define INIT_FLAGS	(SDL_INIT_VIDEO)
+# define INIT_FLAGS	(SDL_INIT_VIDEO | SDL_INIT_TIMER)
 # define WIDTH		(640)
 # define HEIGHT		(480)
 # define WINDOW_FLAGS	(0)

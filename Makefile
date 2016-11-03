@@ -5,16 +5,16 @@
 ## Login   <papadi_a@epitech.net>
 ##
 ## Started on  Wed Nov  2 20:05:55 2016 alexis papadimitriou
-## Last update Wed Nov  2 21:40:11 2016 alexis papadimitriou
+## Last update Thu Nov  3 09:51:25 2016 alexis papadimitriou
 ##
 
 CC		=	gcc
 
 RM		=	rm -f
 
-CFLAGS	=	-W -Wall -Werror -Wextra -I./include
+CFLAGS		=	-W -Wall -Werror -Wextra -I./include
 
-SRCS	=	srcs/main.c \
+SRCS		=	srcs/main.c \
 			srcs/init/template.c \
 			srcs/events/event.c \
 			srcs/utils/putpixel.c \
@@ -27,21 +27,21 @@ SRCS	=	srcs/main.c \
 LIB		=	-lSDL \
 			-lm
 
-OBJS	=	$(SRCS:.c=.o)
+OBJS		=	$(SRCS:.c=.o)
 
-NAME	=	SDL_Template
+NAME		=	SDL_Template
 
 all		:	$(NAME)
 
-$(NAME)	:	$(OBJS)
-		$(CC) $(OBJS) $(LIB) -o $(NAME)
+$(NAME)		:	$(OBJS)
+			$(CC) $(OBJS) $(LIB) -o $(NAME)
 
-clean	:
-		$(RM) $(OBJS)
+clean		:
+			$(RM) $(OBJS)
 
-fclean	:	clean
-		$(RM) $(NAME)
+fclean		:	clean
+			$(RM) $(NAME)
 
 re		:	fclean all
 
-.PHONY	:	all clean fclean re
+.PHONY		:	all clean fclean re

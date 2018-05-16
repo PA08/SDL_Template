@@ -1,2 +1,2 @@
 # SDL_Template
-little sdl template with basic utils functions
+quick sdl template with basic utils functions
